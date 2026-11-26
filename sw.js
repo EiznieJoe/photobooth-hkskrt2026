@@ -1,6 +1,6 @@
 // Service worker: simpan semua fail supaya app boleh dibuka tanpa internet.
 // Tukar nombor VERSION bila anda kemas kini fail app.
-const VERSION = 'hkskrt2026-v5';
+const VERSION = 'hkskrt2026-v6';
 const ASSETS = [
   './', 'index.html', 'style.css', 'app.js', 'config.js', 'manifest.webmanifest',
   'icons/logo.png', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png',
