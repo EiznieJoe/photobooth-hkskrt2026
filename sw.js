@@ -1,13 +1,17 @@
 // Service worker: simpan semua fail supaya app boleh dibuka tanpa internet.
 // Tukar nombor VERSION bila anda kemas kini fail app.
-const VERSION = 'hkskrt2026-v4';
+const VERSION = 'hkskrt2026-v5';
 const ASSETS = [
   './', 'index.html', 'style.css', 'app.js', 'config.js', 'manifest.webmanifest',
   'icons/logo.png', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/maskable-512.png', 'icons/apple-touch-icon.png',
   'frames/biru_potret.webp', 'frames/biru_landskap.webp',
   'frames/ungu_potret.webp', 'frames/ungu_landskap.webp',
   'frames/hijau_potret.webp', 'frames/hijau_landskap.webp',
-  'frames/merahjambu_potret.webp', 'frames/merahjambu_landskap.webp'
+  'frames/merahjambu_potret.webp', 'frames/merahjambu_landskap.webp',
+  'frames/pantai_potret.webp', 'frames/pantai_landskap.webp',
+  'frames/kuning_potret.webp', 'frames/kuning_landskap.webp',
+  'frames/karnival_potret.webp', 'frames/karnival_landskap.webp',
+  'frames/candyland_potret.webp', 'frames/candyland_landskap.webp'
 ];
 
 self.addEventListener('install', (e) => {

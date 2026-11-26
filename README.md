@@ -2,7 +2,7 @@
 
 App photobooth untuk tetamu. Buka link, pilih tema dan bingkai, ambil gambar, simpan. Setiap gambar juga dihantar sendiri ke folder Google Drive anda.
 
-Ada 4 tema, setiap satu ada bingkai Potret dan Landskap:
+Ada 8 tema, setiap satu ada bingkai Potret dan Landskap:
 
 | Tema | Warna | Nama fail |
 |---|---|---|
@@ -10,6 +10,12 @@ Ada 4 tema, setiap satu ada bingkai Potret dan Landskap:
 | Manisan | Ungu | `ungu` |
 | Pasar | Hijau | `hijau` |
 | Tropika | Merah Jambu | `merahjambu` |
+| Pantai | Biru Laut | `biru` |
+| Kuning | Kuning | `hijau` |
+| Karnival 2 | Merah | `merahjambu` |
+| Candyland | Pink | `ungu` |
+
+Nota: 4 tema terakhir guna nama warna tema asal dalam nama fail, supaya Apps Script yang sedia ada terima tanpa perlu diubah.
 
 Contoh nama fail gambar: `HKSKRT2026_ungu_potret_20261126_093015.jpg`
 
@@ -22,7 +28,7 @@ Contoh nama fail gambar: `HKSKRT2026_ungu_potret_20261126_093015.jpg`
 | `index.html`, `style.css`, `app.js` | App itu sendiri. Tak perlu diubah. |
 | `config.js` | **Satu-satunya fail yang anda ubah** (tampal link Apps Script). |
 | `sw.js`, `manifest.webmanifest` | Supaya app boleh dipasang dan dibuka tanpa internet. |
-| `frames/` | 8 bingkai yang dah dipotong. |
+| `frames/` | 16 bingkai yang dah dipotong. |
 | `icons/` | Ikon app (logo sekolah). |
 | `apps-script/Code.gs` | Skrip untuk Google Drive. Ini disalin ke Google Apps Script, bukan GitHub. |
 

@@ -6,6 +6,10 @@ body[data-theme="biru"]{       --c1:#1f4fbf; --c2:#e63323; --c3:#ffc21a; --bg1:#
 body[data-theme="ungu"]{       --c1:#7b2cbf; --c2:#ff4fa0; --c3:#ffd23f; --bg1:#5a1d93; --bg2:#c14bd6; --ink:#33104f; }
 body[data-theme="hijau"]{      --c1:#0f7a4f; --c2:#f2811d; --c3:#ffd23f; --bg1:#0b5e3c; --bg2:#22a46b; --ink:#08341f; }
 body[data-theme="merahjambu"]{ --c1:#c2185b; --c2:#12908e; --c3:#ffc93c; --bg1:#9c1150; --bg2:#ee4a8c; --ink:#4a0824; }
+body[data-theme="pantai"]{     --c1:#0e7fc0; --c2:#e8463a; --c3:#ffd23f; --bg1:#0a5f93; --bg2:#29a8d8; --ink:#06304a; }
+body[data-theme="kuning"]{     --c1:#c98a00; --c2:#e8641b; --c3:#fff3c4; --bg1:#b37a00; --bg2:#f0b400; --ink:#4a2c00; }
+body[data-theme="karnival"]{   --c1:#d7261e; --c2:#1f4fbf; --c3:#ffc21a; --bg1:#a3160f; --bg2:#e8433a; --ink:#4d0a06; }
+body[data-theme="candyland"]{  --c1:#d63c86; --c2:#8a3fd1; --c3:#ffe066; --bg1:#b82a72; --bg2:#f17db6; --ink:#4d0f33; }
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;}
