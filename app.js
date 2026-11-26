@@ -12,12 +12,24 @@ const FRAMES = {
   hijau_potret:        { w:1024, h:1536, win:[106,491,913,1336] },
   merahjambu_landskap: { w:1536, h:1024, win:[120,313,1382,905] },
   merahjambu_potret:   { w:1024, h:1536, win:[115,544,906,1350] },
+  pantai_potret:       { w:941, h:1672, win:[90,486,819,1342] },
+  pantai_landskap:     { w:1448, h:1086, win:[193,295,1223,843] },
+  kuning_potret:       { w:941, h:1672, win:[96,349,805,1329] },
+  kuning_landskap:     { w:1448, h:1086, win:[168,311,1262,905] },
+  karnival_potret:     { w:941, h:1672, win:[75,553,862,1405] },
+  karnival_landskap:   { w:1448, h:1086, win:[169,351,1276,941] },
+  candyland_potret:    { w:941, h:1672, win:[116,345,824,1299] },
+  candyland_landskap:  { w:1448, h:1086, win:[207,324,1240,920] },
 };
 const THEMES = [
   { id:'biru',       name:'Karnival', colour:'Biru',        meta:'#1f4fbf' },
   { id:'ungu',       name:'Manisan',  colour:'Ungu',        meta:'#7b2cbf' },
   { id:'hijau',      name:'Pasar',    colour:'Hijau',       meta:'#0f7a4f' },
   { id:'merahjambu', name:'Tropika',  colour:'Merah Jambu', meta:'#c2185b' },
+  { id:'pantai',     name:'Pantai',     colour:'Biru Laut',  meta:'#0e7fc0' },
+  { id:'kuning',     name:'Kuning',     colour:'Kuning',     meta:'#d99a00' },
+  { id:'karnival',   name:'Karnival 2', colour:'Merah',      meta:'#d7261e' },
+  { id:'candyland',  name:'Candyland',  colour:'Pink',       meta:'#e0458f' },
 ];
 const ZMAX = 3;            // zum maksimum (3x daripada "penuh tingkap")
 const STILL_MAX = 3000;    // saiz maksimum gambar galeri (px)
@@ -391,6 +403,7 @@ const Queue = (() => {
   const DBN = 'hkskrt2026', ST = 'queue';
   let dbp = null;
   const status = {};  // name -> 'busy' | 'ok' | 'wait' | 'err'
+  const backoff = {}; // name -> masa boleh cuba semula
   let lastErr = '';
   let running = false;
   let pendingCount = 0;
@@ -477,6 +490,7 @@ const Queue = (() => {
       lastErr = '';
       items.sort((a, b) => a.t - b.t);
       for (const it of items) {
+        if (backoff[it.name] && backoff[it.name] > Date.now()) continue;
         status[it.name] = 'busy'; render();
         let r;
         try { r = await send(it); }
@@ -486,9 +500,9 @@ const Queue = (() => {
           status[it.name] = 'ok'; doneCount++;
           pendingCount = Math.max(0, pendingCount - 1);
         } else if (r && /bad name|not jpeg|bad size/.test(r.error || '')) {
-          await del(it.name);     // ralat kekal — buang supaya tidak tersangkut
-          status[it.name] = 'err';
-          pendingCount = Math.max(0, pendingCount - 1);
+          // Skrip menolak gambar ini (mungkin Code.gs versi lama). Simpan dalam peranti, cuba lagi 3 minit lagi.
+          backoff[it.name] = Date.now() + 180000;
+          status[it.name] = 'err'; lastErr = 'setup';
         } else {
           status[it.name] = navigator.onLine ? 'err' : 'wait';
           lastErr = r && r.setup ? 'setup' : (navigator.onLine ? 'fail' : 'offline');
