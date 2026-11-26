@@ -10,7 +10,7 @@
 // ID folder Drive = bahagian selepas /folders/ dalam link folder anda.
 const FOLDER_ID = '1lz4Pt4hQJ_ia04OHtNzfcxleGAp0vqqF';
 
-const NAME_RE = /^HKSKRT2026_[a-z0-9]+_(potret|landskap)_\d{8}_\d{6}\.jpg$/;
+const NAME_RE = /^HKSKRT2026_(biru|ungu|hijau|merahjambu)_(potret|landskap)_\d{8}_\d{6}\.jpg$/;
 const MAX_BYTES = 15 * 1024 * 1024;
 
 function doPost(e) {
