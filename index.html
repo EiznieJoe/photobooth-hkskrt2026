@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Photobooth Hari Keusahawanan SK Rugading 2026</title>
+<meta name="description" content="Photobooth Hari Keusahawanan SK Rugading 2026">
+<meta name="theme-color" content="#1f4fbf">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Photobooth HK">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="biru">
+
+<!-- ========== SKRIN 1: LAMAN UTAMA ========== -->
+<section id="home" class="screen active">
+  <header class="home-head">
+    <img src="icons/logo.png" alt="Logo SK Rugading" class="logo">
+    <div>
+      <p class="kicker">Photobooth</p>
+      <h1>Hari Keusahawanan<br>SK Rugading 2026</h1>
+    </div>
+  </header>
+
+  <div class="card">
+    <h2>1. Pilih tema</h2>
+    <div id="themeList" class="theme-list"></div>
+  </div>
+
+  <div class="card">
+    <h2>2. Pilih bingkai</h2>
+    <div class="orient-list">
+      <button class="orient" data-orient="potret">
+        <img id="thumbPotret" alt="">
+        <span>Potret</span>
+      </button>
+      <button class="orient" data-orient="landskap">
+        <img id="thumbLandskap" alt="">
+        <span>Landskap</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="installBox" class="install-box" hidden>
+    <button id="installBtn" class="btn ghost">Pasang app di peranti ini</button>
+  </div>
+  <div id="iosTip" class="tip" hidden>
+    <b>Pasang di iPhone:</b> tekan butang <b>Share</b> (kotak dengan anak panah ke atas) di Safari, kemudian pilih <b>Add to Home Screen</b>.
+  </div>
+
+  <p class="status-line"><span class="sync" data-sync></span></p>
+</section>
+
+<!-- ========== SKRIN 2: KAMERA ========== -->
+<section id="camera" class="screen">
+  <div class="cam-top">
+    <button id="backBtn" class="icon-btn" aria-label="Kembali">&#8592;</button>
+    <span id="camTitle" class="cam-title"></span>
+    <span class="sync small" data-sync></span>
+  </div>
+
+  <div id="stage" class="stage">
+    <canvas id="view"></canvas>
+    <div id="countdown" class="countdown" hidden></div>
+    <div id="flash" class="flash"></div>
+    <div id="camMsg" class="cam-msg" hidden></div>
+  </div>
+
+  <div class="cam-bottom">
+    <div class="zoom-row">
+      <span class="zlabel">Seluruh</span>
+      <input id="zoom" type="range" min="-100" max="100" step="1" value="0" aria-label="Zum">
+      <span class="zlabel">Zum</span>
+    </div>
+    <div class="controls">
+      <button id="galleryBtn" class="side-btn">
+        <span class="ico">&#128444;</span><span>Galeri</span>
+      </button>
+      <button id="shutter" class="shutter" aria-label="Ambil gambar"><span></span></button>
+      <button id="switchBtn" class="side-btn">
+        <span class="ico">&#8635;</span><span>Tukar</span>
+      </button>
+    </div>
+    <div id="galleryBar" class="gallery-bar" hidden>
+      <button id="backToCam" class="btn ghost small">Kembali ke kamera</button>
+    </div>
+  </div>
+  <input id="fileInput" type="file" accept="image/*" hidden>
+  <video id="video" playsinline muted autoplay></video>
+</section>
+
+<!-- ========== SKRIN 3: KEPUTUSAN ========== -->
+<section id="result" class="screen">
+  <div class="cam-top">
+    <button id="homeBtn" class="icon-btn" aria-label="Laman utama">&#8962;</button>
+    <span class="cam-title">Gambar anda</span>
+    <span></span>
+  </div>
+  <div class="result-wrap">
+    <img id="resultImg" alt="Gambar dengan bingkai">
+  </div>
+  <div class="result-actions">
+    <p id="resultSync" class="result-sync"></p>
+    <div class="row">
+      <button id="saveBtn" class="btn primary">Muat Turun</button>
+      <button id="retakeBtn" class="btn ghost">Ambil Semula</button>
+    </div>
+    <p id="saveTip" class="tip small" hidden></p>
+  </div>
+</section>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
